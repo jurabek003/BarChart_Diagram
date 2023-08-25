@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             "September",
             "October"
         )
-        val values = listOf(10f, 50f, 700f, 120f)
+        val values = listOf(10f, 50f, 150f, 120f)
         // BarEntry ma'lumotlarini tayyorlash
         val entries: ArrayList<BarEntry> = ArrayList()
         for (i in values.indices) {
@@ -70,10 +70,10 @@ class MainActivity : AppCompatActivity() {
         leftAxis.axisMaximum = 100f // Maksimum qiymat
 
 // Diapazon belgilari
-        //leftAxis.granularity = 2f // Belgilashning o'zgarish qadami
+        leftAxis.granularity = 2f // Belgilashning o'zgarish qadami
 
         // Tashqi chiziqlarni chizishni o'chirish
-        //leftAxis.setDrawAxisLine(false)
+        leftAxis.setDrawAxisLine(false)
         leftAxis.setDrawGridLines(false)
 
 // Tashqi belgilarni sozlash
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                         val ming="${son2 / 1000}"
                         return ming+"K"
                     } // 1K = 1000
-                    else -> value.toString()
+                    else -> value.toInt().toString()
                 }
             }
         }
