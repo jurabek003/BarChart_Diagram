@@ -1,11 +1,13 @@
 package uz.turgunboyevjurabek.barchartdiagram
 
 import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.RoundedBitmapDrawable
+import com.anychart.AnyChart
+import com.anychart.AnyChartView
+import com.anychart.chart.common.dataentry.DataEntry
+import com.anychart.chart.common.dataentry.ValueDataEntry
+import com.anychart.charts.Pie
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
@@ -13,17 +15,13 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
 import uz.turgunboyevjurabek.barchartdiagram.databinding.ActivityMainBinding
 
@@ -31,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     lateinit var barChart: BarChart
     private lateinit var pieChart: PieChart
-
+    private lateinit var anyChartView: AnyChartView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -157,13 +155,11 @@ class MainActivity : AppCompatActivity() {
         entries.add(PieEntry(10f))
         entries.add(PieEntry(40f))
 
-
-
         // on below line we are setting pie data set
         val dataSet = PieDataSet(entries, "Mobile OS")
 
         dataSet.sliceSpace = 0f
-        //dataSet.iconsOffset = MPPointF(0f, 40f)
+        dataSet.iconsOffset = MPPointF(0f, 40f)
         dataSet.selectionShift = 7f
 
         // add a lot of colors to list
@@ -172,7 +168,6 @@ class MainActivity : AppCompatActivity() {
         colors.add(resources.getColor(R.color.yellow))
         colors.add(resources.getColor(R.color.red))
         colors.add(resources.getColor(R.color.black))
-
         // on below line we are setting colors.
         dataSet.colors = colors
 
@@ -184,17 +179,12 @@ class MainActivity : AppCompatActivity() {
         pieChart.setData(data)
 
 
-
-        // undo all highlights
-
-
-
-
         // loading chart
         pieChart.invalidate()
 
 
     }
+
 
 
 }
