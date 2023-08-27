@@ -136,43 +136,20 @@ class MainActivity : AppCompatActivity() {
         pieChart = binding.myPieChart
         pieChart.setUsePercentValues(true)
         pieChart.getDescription().setEnabled(false)
-        pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
 
-        // on below line we are setting drag for our pie chart
-        pieChart.setDragDecelerationFrictionCoef(0.95f)
         // on below line we are setting hole
 
         pieChart.setDrawHoleEnabled(false)  // o'rtadagi yumaloqni boshqarish
-        pieChart.setHoleColor(Color.WHITE)
 
-        // on below line we are setting circle color and alpha
-        pieChart.setTransparentCircleColor(Color.WHITE)
-        pieChart.setTransparentCircleAlpha(110)
-
-        // on  below line we are setting hole radius
-        pieChart.setHoleRadius(58f)
-        pieChart.setTransparentCircleRadius(61f)
-
-        // on below line we are setting center text
-        pieChart.setDrawCenterText(true)
-
-        // on below line we are setting
-        // rotation for our pie chart
-        pieChart.setRotationAngle(0f)
-
-        // enable rotation of the pieChart by touch
-        pieChart.setRotationEnabled(true)
-        pieChart.setHighlightPerTapEnabled(true)
 
         // on below line we are setting animation for our pie chart
         pieChart.animateY(1400, Easing.EaseInOutQuad)
 
         // on below line we are disabling our legend for pie chart
-        pieChart.legend.isEnabled = false
+        pieChart.legend.isEnabled = true
         pieChart.setEntryLabelColor(Color.WHITE)
         pieChart.setEntryLabelTextSize(12f)
 
-        // on below line we are creating array list and
         // adding data to it to display in pie chart
         val entries: ArrayList<PieEntry> = ArrayList()
         entries.add(PieEntry(50f))
@@ -180,16 +157,14 @@ class MainActivity : AppCompatActivity() {
         entries.add(PieEntry(10f))
         entries.add(PieEntry(40f))
 
+
+
         // on below line we are setting pie data set
         val dataSet = PieDataSet(entries, "Mobile OS")
 
-        // on below line we are setting icons.
-        dataSet.setDrawIcons(true)
-
-        // on below line we are setting slice for pie
         dataSet.sliceSpace = 0f
-        dataSet.iconsOffset = MPPointF(0f, 40f)
-        dataSet.selectionShift = 5f
+        //dataSet.iconsOffset = MPPointF(0f, 40f)
+        dataSet.selectionShift = 7f
 
         // add a lot of colors to list
         val colors: ArrayList<Int> = ArrayList()
@@ -208,11 +183,16 @@ class MainActivity : AppCompatActivity() {
         data.setValueTextColor(Color.WHITE)
         pieChart.setData(data)
 
+
+
         // undo all highlights
-        pieChart.highlightValues(null)
+
+
+
 
         // loading chart
         pieChart.invalidate()
+
 
     }
 
