@@ -23,20 +23,23 @@ import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.utils.MPPointF
+import uz.turgunboyevjurabek.barchartdiagram.adapter.RvDiagramma
 import uz.turgunboyevjurabek.barchartdiagram.databinding.ActivityMainBinding
+import uz.turgunboyevjurabek.barchartdiagram.madels.Diagram_Class
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     lateinit var barChart: BarChart
     private lateinit var pieChart: PieChart
     private lateinit var anyChartView: AnyChartView
+    private lateinit var rvDiagramma: RvDiagramma
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         barChartFunction()
         pieChartFunction()
-
+        rvAdapter()
     }
 
     private fun barChartFunction() {
@@ -184,6 +187,20 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    private fun rvAdapter(){
+        val list=ArrayList<Diagram_Class>()
+        list.add(Diagram_Class(R.color.black,"Jurabek 1","123,45"))
+        list.add(Diagram_Class(R.color.red,"Jurabek 2","223,45"))
+        list.add(Diagram_Class(R.color.yellow,"Jurabek 3","323,45"))
+        list.add(Diagram_Class(R.color.purple_200,"Jurabek 4","423,45"))
+        list.add(Diagram_Class(R.color.kulrang,"Jurabek 5","523,45"))
+        list.add(Diagram_Class(androidx.appcompat.R.color.abc_background_cache_hint_selector_material_dark,"Jurabek 6","623,45"))
+
+        rvDiagramma=RvDiagramma(list)
+        binding.diagramRv.adapter=rvDiagramma
+
+    }
+
 
 
 
